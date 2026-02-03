@@ -12,8 +12,28 @@
 
       gtag('config', 'AW-17876255583');
     </script>
+<!-- Event snippet for Compra zappost conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17876255583/ahiaCLCshPIbEN-GiMxC',
+      'value': 1.0,
+      'currency': 'BRL',
+      'transaction_id': '',
+      'event_callback': callback
+      // 'new_customer': true /* calculate dynamically, populate with true/false */,
+  });
+  return false;
+}
+</script>
 
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZapPost - IA que Cria Posts Prontos no WhatsApp</title>
@@ -1152,7 +1172,7 @@
             
             <div class="pricing-cards">
                 <!-- Plano Mensal -->
-                <div class="pricing-card" data-plan="mensal" data-plan-url="https://go.hotmart.com/A103832777T?ap=c036">
+                <div class="pricing-card" data-plan="mensal" onclick="gtag_report_conversion('https://go.hotmart.com/A103832777T?ap=c036')">
                     <div class="card-left">
                         <div class="selection-indicator"></div>
                         <div class="card-info">
@@ -1170,7 +1190,7 @@
                 </div>
 
                 <!-- Plano Semestral (Destaque) -->
-                <div class="pricing-card selected" data-plan="semestral" data-plan-url="https://go.hotmart.com/A103832777T?ap=39ab">
+                <div class="pricing-card selected" data-plan="semestral" onclick="gtag_report_conversion('https://go.hotmart.com/A103832777T?ap=39ab')">
                     <div class="card-left">
                         <div class="selection-indicator"></div>
                         <div class="card-info">
